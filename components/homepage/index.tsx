@@ -1,20 +1,21 @@
-import { View, StyleSheet, Text, SafeAreaView } from "react-native";
-import { useState, useCallback, useRef } from "react";
-import { Stack, Link, useFocusEffect } from "expo-router";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { useFocusEffect } from "expo-router";
+import { useCallback, useRef, useState } from "react";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 import PagerView from "react-native-pager-view";
 
 // components and utils
-import { SquareWidget } from "@/components/squareWidget";
+import "@/app/global.css";
 import { LineChart } from "@/components/LineChart";
+import { PaginationIndicator } from "@/components/PaginationDots";
+import { SquareWidget } from "@/components/squareWidget";
 import { generateRandomDataPoint, type DataPoint } from "@/utils/data";
 import Animated, { useSharedValue } from "react-native-reanimated";
-import { PaginationIndicator } from "@/components/PaginationDots";
-import "@/app/global.css";
 // import { useNotification } from "@/context/NotificationContext";
 
 // constants
 const AnimatedPagerView = Animated.createAnimatedComponent(PagerView);
+
+
 
 export default function Index() {
   const [chartData, setChartData] = useState<DataPoint[]>(
