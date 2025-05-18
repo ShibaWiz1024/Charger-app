@@ -7,7 +7,7 @@ import { auth } from "../../firebase";
 import Home from "../(tabs)/home"; // 或你自己的主畫面元件
 import Login from "./login"; // 🔁 你需要先建 login.tsx
 
-export default function index() {
+export default function Index() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true); // 等待 Firebase 初始化
 
