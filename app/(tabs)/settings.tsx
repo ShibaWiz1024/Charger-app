@@ -15,7 +15,7 @@ export default function Settings() {
 
   const handleAccountAction = (action: "帳戶名稱" | "修改密碼" | "登出") => {
     if (action === "帳戶名稱") {
-      router.push("../account"); // 跳到 /account 頁面
+      router.push("/(auth)/account"); // 跳到 /account 頁面
     } else if (action === "修改密碼") {
       router.push("../change-password"); // 跳到 /change-password 頁面
     } else if (action === "登出") {
