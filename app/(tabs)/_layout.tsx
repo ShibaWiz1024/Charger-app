@@ -6,17 +6,18 @@ export default function TabsLayout() {
   const router = useRouter();
   return (
     <>
-    <Tabs screenOptions={{
-        tabBarActiveTintColor: "orange", //標籤顏色
-        headerStyle:{
-            backgroundColor:"#7D7DFF",
-        },
-        headerShadowVisible:false,
-        headerTintColor:"white",
-        tabBarStyle:{
-            backgroundColor:"white",
-        }
-    }}>
+        <Tabs  
+            screenOptions={{
+                tabBarActiveTintColor: "orange", //標籤顏色
+                headerStyle:{
+                    backgroundColor:"#7D7DFF",
+                },
+                headerShadowVisible:false,
+                headerTintColor:"white",
+                tabBarStyle:{
+                    backgroundColor:"white",
+                }
+             }}>
     <Tabs.Screen name =  "home" 
         options = {{
             headerTitle: "即時訊息顯示",

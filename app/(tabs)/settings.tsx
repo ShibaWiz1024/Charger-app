@@ -1,7 +1,8 @@
 import Slider from "@react-native-community/slider"; // 滑桿元件（需額外安裝套件）
 import { useRouter } from "expo-router"; // Expo Router 導入 router
 import React, { useState } from "react";
-import { StyleSheet, Switch, Text, TouchableOpacity, View } from "react-native";
+import { Image, Linking, StyleSheet, Switch, Text, TouchableOpacity, View } from "react-native";
+
 
 export default function Settings() {
   // 各種狀態的 useState
@@ -13,11 +14,9 @@ export default function Settings() {
   const [temp1, setTemp1] = useState(37);                       // 第一階段溫度值
   const [temp2, setTemp2] = useState(52);                       // 第二階段溫度值
 
-  const handleAccountAction = (action: "帳戶資訊" | "修改密碼") => {
-    if (action === "帳戶資訊") {
+  const handleAccountAction = (action: "帳戶登入/註冊") => {
+    if (action === "帳戶登入/註冊") {
       router.push("/(auth)/account"); // 跳到 /account 頁面
-    } else if (action === "修改密碼") {
-      router.push("../change-password"); // 跳到 /change-password 頁面
     } 
   };
 
@@ -93,12 +92,24 @@ export default function Settings() {
       </View>
 
       <Text style={styles.sectionTitle}>帳戶管理</Text>
-      <TouchableOpacity style={styles.accountButton} onPress={() => handleAccountAction("帳戶資訊")}>
-        <Text style={styles.label}>帳戶資訊</Text>
+      <TouchableOpacity style={styles.accountButton} onPress={() => handleAccountAction("帳戶登入/註冊")}>
+        <Text style={styles.label}>帳戶登入/註冊</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.accountButton} onPress={() => handleAccountAction("修改密碼")}>
-        <Text style={styles.label}>修改密碼</Text>
-      </TouchableOpacity>
+
+      <View style={{ flexDirection: "row", alignItems: "center", marginTop: 10 }}>
+        <Text style={styles.discussion}>加入討論區:</Text>
+        <TouchableOpacity onPress={() => Linking.openURL("https://www.facebook.com/groups/696825110058746")}>
+          <Image
+            source={require("../../assets/images/unnamed.png")} // 換成你的圖片路徑
+            style={{
+              width: 30, // 跟文字大小相同
+              height: 30,
+              marginLeft: 6,
+            }}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -110,6 +121,7 @@ const styles = StyleSheet.create({
   row: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginVertical: 10 }, // 開關列
   sliderRow: { marginVertical: 10 }, // 滑桿列
   label: { fontSize: 16 }, // 標籤文字
+  discussion: {fontSize: 20 },
   sectionTitle: { fontSize: 18, marginTop: 20, fontWeight: "bold", backgroundColor: "#D3D3D3", padding: 5 }, // 分區標題
   languageRow: { flexDirection: "row", justifyContent: "space-around", marginTop: 10 }, // 語言選擇列
   languageButton: {
