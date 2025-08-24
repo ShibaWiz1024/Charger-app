@@ -1,9 +1,11 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs, useRouter } from "expo-router";
+import { useTranslation } from "react-i18next";
 
 
 export default function TabsLayout() {
   const router = useRouter();
+  const { t } = useTranslation();
   return (
     <>
         <Tabs  
@@ -20,7 +22,8 @@ export default function TabsLayout() {
              }}>
     <Tabs.Screen name =  "home" 
         options = {{
-            headerTitle: "即時訊息顯示",
+            headerTitle: t("tabs.home"),
+            tabBarLabel: t("tabs.home"),
             tabBarIcon: ({focused , color}) => (
                 <Ionicons
                     name = {focused ? "battery-charging" : "battery-charging-outline"} //點擊標籤時顯示填滿的圖示;反之顯示空心的圖示
@@ -31,7 +34,8 @@ export default function TabsLayout() {
         }} />
       <Tabs.Screen name =  "history" 
         options={{
-            headerTitle: "歷史充電查詢",
+            headerTitle: t("tabs.history"),
+            tabBarLabel: t("tabs.history"),
             tabBarIcon: ({focused , color}) => (
                 <Ionicons
                     name = {focused ? "timer-sharp" : "timer-outline"} //點擊標籤時顯示填滿的圖示;反之顯示空心的圖示
@@ -42,7 +46,8 @@ export default function TabsLayout() {
         }} />
         <Tabs.Screen name =  "error" 
         options={{
-            headerTitle: "歷史異常紀錄",
+            headerTitle: t("tabs.error"),
+            tabBarLabel: t("tabs.error"),
             tabBarIcon: ({focused , color}) => (
                 <Ionicons
                     name = {focused ? "warning-sharp" : "warning-outline"} //點擊標籤時顯示填滿的圖示;反之顯示空心的圖示
@@ -53,7 +58,8 @@ export default function TabsLayout() {
         }} />
         <Tabs.Screen name =  "settings" 
         options = {{
-            headerTitle: "設定",
+            headerTitle: t("tabs.settings"),
+            tabBarLabel: t("tabs.settings"),
             tabBarIcon: ({focused , color}) => (
                 <Ionicons
                     name = {focused ? "settings-sharp" : "settings-outline"} //點擊標籤時顯示填滿的圖示;反之顯示空心的圖示
